@@ -1,0 +1,38 @@
+from gtts import gTTS
+import os
+
+# List of 20 sample English sentences
+sentences = [
+    "Hello, how are you today?",
+    "The quick brown fox jumps over the lazy dog.",
+    "Artificial intelligence is transforming the world.",
+    "OpenAI creates powerful AI models.",
+    "Python programming is fun and versatile.",
+    "This is a sample sentence for testing.",
+    "I love listening to music on a rainy day.",
+    "Can you help me translate this text?",
+    "Natural language processing is fascinating.",
+    "The weather is nice and sunny today.",
+    "She sells seashells by the seashore.",
+    "The cat sat on the mat.",
+    "Learning new things keeps the mind sharp.",
+    "Let's build something amazing with code.",
+    "This audio file is generated from text.",
+    "Technology advances rapidly every year.",
+    "Data science involves statistics and programming.",
+    "Machine learning models improve with data.",
+    "Please speak clearly into the microphone.",
+    "Thank you for using this text to speech converter."
+]
+
+output_folder = "output_audio"
+
+# Create the folder if it doesn't exist
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+for idx, sentence in enumerate(sentences, 1):
+    tts = gTTS(text=sentence, lang='en')
+    output_path = os.path.join(output_folder, f"sentence_{idx}.mp3")
+    tts.save(output_path)
+    print(f"Saved: {output_path}")
